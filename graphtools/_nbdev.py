@@ -2,9 +2,10 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"say_hello": "00_core.ipynb"}
+index = {"sample_nodes": "00_sampling.ipynb",
+         "sample_node": "00_sampling.ipynb"}
 
-modules = ["core.py"]
+modules = ["sampling.py"]
 
 doc_url = "https://HenryKenlay.github.io/graphtools/"
 

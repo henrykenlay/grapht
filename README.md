@@ -8,16 +8,16 @@
 
 -->
 
-# Project name here
+# Graphtools 
 
-> Summary description here.
+> Tools to help me with my DPhil
 
 
-This file will become your README and also the index of your documentation.
+A collection of tools for my research focused on GSP
 
-## Install
+## Install (coming soon)
 
-`pip install your_project_name`
+`pip install graphtools`
 
 ## How to use
 
@@ -25,7 +25,7 @@ Fill me in please! Don't forget code examples:
 <div class="codecell" markdown="1">
 <div class="input_area" markdown="1">
 
-```
+```python
 say_hello('hi')
 ```
 

@@ -10,8 +10,8 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: module name here
-      url: /core
+      title: Sampling
+      url: /sampling
     output: web
     title: graphtools
   output: web

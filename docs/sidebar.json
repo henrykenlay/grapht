@@ -2,6 +2,7 @@
   "graphtools": {
     "Overview": "/",
     "Graph tools": "/graphtools",
-    "Sampling": "/sampling"
+    "Sampling": "/sampling",
+    "Spectral graph theory tools": "/spectral"
   }
 }

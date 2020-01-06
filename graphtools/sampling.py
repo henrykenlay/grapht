@@ -4,7 +4,7 @@ __all__ = ['sample_nodes', 'sample_node']
 
 # Cell
 def sample_nodes(G, num_nodes=1):
-    "Uniformly samples num_nodes nodes"
+    "Uniformly samples `num_nodes` nodes"
     nodes = G.nodes()
     return np.random.choice(list(nodes), num_nodes, replace=False)
 

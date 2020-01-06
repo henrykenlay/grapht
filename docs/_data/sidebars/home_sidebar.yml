@@ -16,7 +16,7 @@ entries:
       title: Sampling
       url: /sampling
     - output: web,pdf
-      title: Spectral graph theory tools
+      title: Spectral
       url: /spectral
     output: web
     title: graphtools

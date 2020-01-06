@@ -7,8 +7,8 @@ index = {"non_pendant_edges": "00_graphtools.ipynb",
          "has_isolated_nodes": "00_graphtools.ipynb",
          "sample_nodes": "01_sampling.ipynb",
          "sample_node": "01_sampling.ipynb",
-         "laplacian_distance": "02_spectral.ipynb",
          "laplacian": "02_spectral.ipynb",
+         "laplacian_distance": "02_spectral.ipynb",
          "sparse_2norm": "02_spectral.ipynb"}
 
 modules = ["graphtools.py",

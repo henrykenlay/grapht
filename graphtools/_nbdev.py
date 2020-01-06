@@ -2,8 +2,8 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"sample_nodes": "00_sampling.ipynb",
-         "sample_node": "00_sampling.ipynb"}
+index = {"sample_nodes": "01_sampling.ipynb",
+         "sample_node": "01_sampling.ipynb"}
 
 modules = ["sampling.py"]
 

@@ -10,6 +10,9 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
+      title: Graph tools
+      url: /graphtools
+    - output: web,pdf
       title: Sampling
       url: /sampling
     output: web

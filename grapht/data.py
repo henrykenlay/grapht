@@ -7,6 +7,7 @@ from nbdev.showdoc import *
 import numpy as np
 import networkx as nx
 import scipy
+from gnnbench.data.io import load_dataset
 
 # Cell
 def make_planar_graph(n):

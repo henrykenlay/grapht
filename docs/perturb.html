@@ -79,6 +79,7 @@ summary: "Functions for perturbing a graph "
     <span class="n">edges_removed</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">Gp</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
     <span class="n">highlight_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">edges_removed</span><span class="p">,</span> <span class="n">axs</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos</span><span class="p">)</span>
     <span class="n">axs</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">f</span><span class="s1">&#39;k=</span><span class="si">{k}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -96,6 +97,16 @@ The iterable function was deprecated in Matplotlib 3.1 and will be removed in 3.
   if not cb.iterable(width):
 </pre>
 </div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea ">
+<pre>&lt;Figure size 1600x500 with 4 Axes&gt;</pre>
+</div>
+
 </div>
 
 </div>

@@ -4,6 +4,8 @@
     "Graph tools": "/graphtools",
     "Sampling": "/sampling",
     "Spectral": "/spectral",
-    "Title": "/data"
+    "Perturb": "/perturb",
+    "Plotting": "/plotting",
+    "Data": "/data"
   }
 }

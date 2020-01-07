@@ -3,7 +3,6 @@
 __all__ = ['make_planar_graph']
 
 # Cell
-from nbdev.showdoc import *
 import numpy as np
 import networkx as nx
 import scipy

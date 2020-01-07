@@ -3,7 +3,6 @@
 __all__ = ['khop_edge_deletion']
 
 # Cell
-from nbdev.showdoc import *
 import networkx as nx
 from .graphtools import non_pendant_edges
 from .sampling import khop_subgraph, sample_edges

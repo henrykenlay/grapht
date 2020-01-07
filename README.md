@@ -8,37 +8,13 @@
 
 -->
 
-# Graphtools 
+# Grapht
 
 > Tools to help me with my DPhil
 
 
 A collection of tools for my research focused on GSP
 
-## Install (coming soon)
+## Install
 
-`pip install graphtools`
-
-## How to use
-
-Fill me in please! Don't forget code examples:
-<div class="codecell" markdown="1">
-<div class="input_area" markdown="1">
-
-```python
-say_hello('hi')
-```
-
-</div>
-<div class="output_area" markdown="1">
-
-
-
-
-    'Hello hi!'
-
-
-
-</div>
-
-</div>
+`pip install grapht`

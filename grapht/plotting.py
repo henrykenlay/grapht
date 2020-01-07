@@ -3,6 +3,7 @@
 __all__ = ['highlight_edges']
 
 # Cell
+from nbdev.showdoc import *
 import matplotlib.pyplot as plt
 import networkx as nx
 

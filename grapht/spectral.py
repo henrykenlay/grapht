@@ -3,6 +3,10 @@
 __all__ = ['laplacian', 'laplacian_distance', 'sparse_2norm']
 
 # Cell
+from nbdev.showdoc import *
+import networkx as nx
+
+# Cell
 def laplacian(G, setdiag=False):
     "Laplacian matrix of the graph `G`"
     L = nx.normalized_laplacian_matrix(G)

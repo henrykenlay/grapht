@@ -18,3 +18,7 @@ A collection of tools for my research focused on GSP
 ## Install
 
 `pip install grapht`
+
+## Documentation
+
+https://henrykenlay.github.io/grapht

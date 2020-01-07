@@ -3,6 +3,10 @@
 __all__ = ['non_pendant_edges', 'is_pendant', 'has_isolated_nodes']
 
 # Cell
+from nbdev.showdoc import *
+import networkx as nx
+
+# Cell
 def non_pendant_edges(G):
     "Returns all non pendant edges of a graph `G`"
     edges = list(G.edges())

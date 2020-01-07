@@ -1,7 +1,7 @@
-repository: HenryKenlay/graphtools
+repository: HenryKenlay/grapht
 output: web
-topnav_title: graphtools
-site_title: graphtools
+topnav_title: grapht
+site_title: grapht
 company_name: Henry Kenlay
 description: Tools I use a lot in my DPhil
 # Set to false to disable KaTeX math

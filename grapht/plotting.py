@@ -8,9 +8,11 @@ import matplotlib.pyplot as plt
 import networkx as nx
 
 # Cell
-def highlight_edges(G, edges, ax, pos):
+def highlight_edges(G, edges, ax, pos, node_size=300):
     "Draws the graph G with edges in `edges` drawn in red"
     nx.draw_networkx_nodes(G, pos=pos, node_size=10, ax=ax)
     nx.draw_networkx_edges(G, pos=pos, edgelist=set(G.edges()) - set(edges), ax=ax)
     nx.draw_networkx_edges(G, pos=pos, edgelist=edges, ax=ax, edge_color='red')
+    ax.get_xaxis().set_visible(False)
+    ax.get_yaxis().set_visible(False)
     return ax

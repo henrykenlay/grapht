@@ -5,6 +5,8 @@ __all__ = ['laplacian', 'laplacian_distance', 'sparse_2norm']
 # Cell
 from nbdev.showdoc import *
 import networkx as nx
+import numpy as np
+import scipy.sparse as sp
 
 # Cell
 def laplacian(G, setdiag=False):

@@ -25,7 +25,7 @@ lic = licenses[cfg['license']]
 min_python = cfg['min_python']
 
 setuptools.setup(
-    dependency_links=['https://github.com/shchur/gnn-benchmark/tree/master/gnnbench'],
+    dependency_links=['git+https://github.com/shchur/gnn-benchmark/tree/master/gnnbench'],
     name = cfg['lib_name'],
     license = lic[0],
     classifiers = [

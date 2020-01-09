@@ -5,6 +5,8 @@ __all__ = ['non_pendant_edges', 'is_pendant', 'has_isolated_nodes', 'laplacian']
 # Cell
 from nbdev.showdoc import *
 import networkx as nx
+import warnings
+import scipy.sparse as sp
 
 # Cell
 def non_pendant_edges(G):

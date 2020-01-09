@@ -15,10 +15,14 @@ index = {"non_pendant_edges": "00_graphtools.ipynb",
          "sparse_2norm": "02_metrics.ipynb",
          "sparse_maxnorm": "02_metrics.ipynb",
          "laplacian_distance": "02_metrics.ipynb",
+         "LineDistances": "02_metrics.ipynb",
          "khop_edge_deletion": "03_perturb.ipynb",
          "highlight_edges": "04_plotting.ipynb",
          "cora": "05_data.ipynb",
-         "make_planar_graph": "05_data.ipynb"}
+         "make_planar_graph": "05_data.ipynb",
+         "BAGraph": "05_data.ipynb",
+         "SensorGraph": "05_data.ipynb",
+         "CoraGraph": "05_data.ipynb"}
 
 modules = ["graphtools.py",
            "sampling.py",

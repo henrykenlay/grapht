@@ -97,6 +97,50 @@ summary: "Functions for general graph manipulation and property checking"
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Spectral">Spectral<a class="anchor-link" href="#Spectral">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The normalised Laplacian of a graph $\mathcal{G}$ is given by 
+$$\mathcal{L}(\mathcal{G}) = \begin{cases}
+1 &amp; \text{if }u=v \text{ and } d_u &gt; 0 \\
+\frac{-1}{\sqrt{d_ud_v}} &amp; \text{if }u \sim v \\
+0 &amp; otherwise
+\end{cases}
+$$</p>
+<p>In this convention the diagonal entry is always $1$ unless the graph has isolated nodes in which case the entries are $0$ at those nodes. By setting <code>setdiag=True</code> then the diagonal entries will always be $1$ (even in the case of isolated nodes)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="laplacian" class="doc_header"><code>laplacian</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/graphtools.py#L31" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>laplacian</code>(<strong><code>G</code></strong>, <strong><code>setdiag</code></strong>=<em><code>False</code></em>)</p>
+</blockquote>
+<p>Laplacian matrix of the graph <code>G</code></p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 </div>
  
 

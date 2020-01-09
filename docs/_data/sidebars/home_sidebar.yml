@@ -16,8 +16,8 @@ entries:
       title: Sampling
       url: /sampling
     - output: web,pdf
-      title: Spectral
-      url: /spectral
+      title: Metrics
+      url: /metrics
     - output: web,pdf
       title: Perturb
       url: /perturb

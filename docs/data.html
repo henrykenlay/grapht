@@ -43,7 +43,7 @@ summary: "Utilities for retrieving benchmarks and generating random graphs"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="cora" class="doc_header"><code>cora</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/data.py#L12" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>cora</code>()</p>
+<h4 id="cora" class="doc_header"><code>cora</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/data.py#L13" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>cora</code>()</p>
 </blockquote>
 <p>Returns A, X, y where
     A : is the adjacency matrix
@@ -60,7 +60,7 @@ summary: "Utilities for retrieving benchmarks and generating random graphs"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Synthetic">Synthetic<a class="anchor-link" href="#Synthetic">&#182;</a></h2>
+<h2 id="Synethetic">Synethetic<a class="anchor-link" href="#Synethetic">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -76,7 +76,7 @@ summary: "Utilities for retrieving benchmarks and generating random graphs"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="make_planar_graph" class="doc_header"><code>make_planar_graph</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/data.py#L24" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>make_planar_graph</code>(<strong><code>n</code></strong>)</p>
+<h4 id="make_planar_graph" class="doc_header"><code>make_planar_graph</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/data.py#L26" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>make_planar_graph</code>(<strong><code>n</code></strong>)</p>
 </blockquote>
 <p>Makes a planar graph with n nodes</p>
 <p>Code adapted from <a href="https://stackoverflow.com/questions/26681899/how-to-make-networkx-graph-from-delaunay-preserving-attributes-of-the-input-node">https://stackoverflow.com/questions/26681899/how-to-make-networkx-graph-from-delaunay-preserving-attributes-of-the-input-node</a></p>
@@ -98,24 +98,6 @@ summary: "Utilities for retrieving benchmarks and generating random graphs"
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;&lt;ipython-input-6-e7d14a4d1930&gt;&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">15</span>
-<span class="ansi-red-fg">    &#34; KNN sensor graph, this used the github pygsp.graphs.Sensor implementation, not the stable release (i.e. as described in the docs) &#34;&#34;</span>
-                                                                                                                                          ^
-<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> EOL while scanning string literal
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 
@@ -126,7 +108,7 @@ summary: "Utilities for retrieving benchmarks and generating random graphs"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="BAGraph" class="doc_header"><code>class</code> <code>BAGraph</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/data.py#L45" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>BAGraph</code>(<strong><code>n</code></strong>, <strong><code>m</code></strong>)</p>
+<h2 id="BAGraph" class="doc_header"><code>class</code> <code>BAGraph</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/data.py#L47" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>BAGraph</code>(<strong><code>n</code></strong>, <strong><code>m</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -146,7 +128,7 @@ summary: "Utilities for retrieving benchmarks and generating random graphs"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="SensorGraph" class="doc_header"><code>class</code> <code>SensorGraph</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/data.py#L57" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SensorGraph</code>(<strong><code>n</code></strong>)</p>
+<h2 id="SensorGraph" class="doc_header"><code>class</code> <code>SensorGraph</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/data.py#L59" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SensorGraph</code>(<strong><code>n</code></strong>)</p>
 </blockquote>
 <p>KNN sensor graph, this used the github pygsp.graphs.Sensor implementation, not the stable release (i.e. as described in the docs)</p>
 
@@ -167,7 +149,7 @@ summary: "Utilities for retrieving benchmarks and generating random graphs"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="CoraGraph" class="doc_header"><code>class</code> <code>CoraGraph</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/data.py#L72" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CoraGraph</code>(<strong><code>save_location</code></strong>=<em><code>'/tmp/cora'</code></em>)</p>
+<h2 id="CoraGraph" class="doc_header"><code>class</code> <code>CoraGraph</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/data.py#L74" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>CoraGraph</code>(<strong><code>save_location</code></strong>=<em><code>'/tmp/cora'</code></em>)</p>
 </blockquote>
 
 </div>

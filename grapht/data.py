@@ -7,6 +7,7 @@ from nbdev.showdoc import *
 import numpy as np
 import networkx as nx
 import scipy
+from pathlib import Path
 
 # Cell
 def cora():
@@ -16,7 +17,8 @@ def cora():
         X : is the feature matrix
         y : are the node labels
     """
-    cora = np.load('data/cora_gnnbench.npz', allow_pickle=True)
+    fname = Path(__file__).parents[1].joinpath('data/cora_gnnbench.npz')
+    cora = np.load(fname, allow_pickle=True)
     A, X, y = cora['A'].tolist(), cora['X'].tolist(), cora['y']
     return A, X, y
 

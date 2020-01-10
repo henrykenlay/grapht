@@ -6,6 +6,9 @@ __all__ = ['highlight_edges', 'heatmap']
 from nbdev.showdoc import *
 import matplotlib.pyplot as plt
 import networkx as nx
+import numpy as np
+import pandas as pd
+import seaborn as sns
 
 # Cell
 def highlight_edges(G, edges, ax, pos, node_size=300):

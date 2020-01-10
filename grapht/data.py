@@ -56,12 +56,14 @@ class BAGraph():
     def number_of_edges(self):
         return self.generate().number_of_edges()
 
+    def __str__(self):
+        return f'BA-{self.n}-{self.m}'
+
 class SensorGraph():
     " KNN sensor graph, this used the github pygsp.graphs.Sensor implementation, not the stable release (i.e. as described in the docs) "
 
     def __init__(self, n):
         self.n = n
-        self.regular = regular
 
     def generate(self):
         G = pygsp.graphs.Sensor(self.n)
@@ -71,15 +73,20 @@ class SensorGraph():
         graphs = [self.generate() for _ in range(samples)]
         return np.mean([G.number_of_edges() for G in graphs])
 
+    def __str__(self):
+        return f'Sensor-{self.n}'
+
 class CoraGraph():
 
     def __init__(self, save_location='/tmp/cora'):
-        dataset = torch_geometric.datasets.Planetoid(save_location, 'Cora')
-        G = torch_geometric.utils.to_networkx(dataset.data).to_undirected()
-        self.cora = max(nx.connected_component_subgraphs(G), key=len)
+        A, _, _ = cora()
+        self.cora = nx.from_scipy_sparse_matrix(A)
 
     def generate(self):
         return self.cora
 
     def number_of_edges(self):
         return self.cora.number_of_edges()
+
+    def __str__(self):
+        return 'Cora'

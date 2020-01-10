@@ -12,10 +12,12 @@ from .sampling import khop_subgraph, sample_edges
 def khop_edge_deletion(G, k, r):
     """
     Removes r edges which are in a k-hop neighbourhood of some node, the graph will remain connected
+
+    If k is None then the samples are taken uniformly
     """
     solution = None
     while solution is None:
-        subgraph = khop_subgraph(G, k)
+        subgraph = khop_subgraph(G, k) if k is not None else G
         if len(non_pendant_edges(subgraph)) < r:
             continue
         edges = sample_edges(subgraph, r, non_pendant=True)

@@ -46,6 +46,7 @@ summary: "Functions for perturbing a graph "
 <h4 id="khop_edge_deletion" class="doc_header"><code>khop_edge_deletion</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/perturb.py#L12" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>khop_edge_deletion</code>(<strong><code>G</code></strong>, <strong><code>k</code></strong>, <strong><code>r</code></strong>)</p>
 </blockquote>
 <p>Removes r edges which are in a k-hop neighbourhood of some node, the graph will remain connected</p>
+<p>If k is None then the samples are taken uniformly</p>
 
 </div>
 
@@ -88,18 +89,6 @@ summary: "Functions for perturbing a graph "
 
 <div class="output_wrapper">
 <div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/anaconda3/lib/python3.7/site-packages/sklearn/utils/__init__.py:4: DeprecationWarning: Using or importing the ABCs from &#39;collections&#39; instead of from &#39;collections.abc&#39; is deprecated, and in 3.8 it will stop working
-  from collections import Sequence
-/anaconda3/lib/python3.7/site-packages/networkx/drawing/nx_pylab.py:579: MatplotlibDeprecationWarning: 
-The iterable function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use np.iterable instead.
-  if not cb.iterable(width):
-</pre>
-</div>
-</div>
 
 <div class="output_area">
 

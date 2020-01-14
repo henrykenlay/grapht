@@ -7,6 +7,7 @@ from nbdev.showdoc import *
 import numpy as np
 import networkx as nx
 import scipy
+import pygsp
 from pathlib import Path
 
 # Cell

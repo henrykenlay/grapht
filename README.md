@@ -30,4 +30,5 @@ https://henrykenlay.github.io/grapht
 - Change CoraGraph to BenchGNNGraph
 - Fix figure in perturb documentation
 - Hide helper functions from docs
+- Add consistent documentation 
 - Push reasonable state version to pypi 

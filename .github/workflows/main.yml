@@ -13,7 +13,7 @@ jobs:
       run: |
         curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
         bash Miniconda3-latest-MacOSX-x86_64.sh -b
-        conda install -c conda-forge graph-tool -y
+        /Users/runner/miniconda3/bin/conda install -c conda-forge graph-tool -y
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         brew install graph-tool
     - name: Install the library

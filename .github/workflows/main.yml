@@ -16,6 +16,10 @@ jobs:
         /Users/runner/miniconda3/bin/conda install -c conda-forge graph-tool -y
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         brew install graph-tool
+    - name: Test conda
+      run: |
+        conda install -c anaconda numpy -y
+        python -c "import numpy"
     - name: Install the library
       run: |
         pip install nbdev jupyter

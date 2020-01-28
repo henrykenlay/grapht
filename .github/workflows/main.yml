@@ -13,6 +13,7 @@ jobs:
       run: |
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         brew install graph-tool
+        conda install -c conda-forge graph-tool -y
     - name: Install the library
       run: |
         pip install nbdev jupyter

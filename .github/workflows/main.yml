@@ -2,19 +2,13 @@ name: CI
 on: [push]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-python@v1
       with:
         python-version: '3.6'
         architecture: 'x64'
-    - name: Install graph-tool
-      run: |
-        deb http://downloads.skewed.de/apt/bionic bionic universe
-        deb-src http://downloads.skewed.de/apt/bionic bionic universe
-        apt-key adv --keyserver keys.openpgp.org --recv-key 612DEFB798507F25
-        apt-get install python3-graph-tool
     - name: Install the library
       run: |
         pip install nbdev jupyter

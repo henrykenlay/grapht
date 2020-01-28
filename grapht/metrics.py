@@ -79,6 +79,7 @@ class LineDistancesDataset(LineDistances):
         i, j = self.edge_index(edge1), self.edge_index(edge2)
         return self.all_path_lengths[i, j]
 
+    @lru_cache(maxsize=None)
     def edge_index(self, edge):
         return self.line_graph_nodes.index(edge)
 

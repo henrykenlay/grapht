@@ -43,9 +43,9 @@ summary: "Functions for perturbing a graph "
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="khop_edge_deletion" class="doc_header"><code>khop_edge_deletion</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/perturb.py#L12" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>khop_edge_deletion</code>(<strong><code>G</code></strong>, <strong><code>k</code></strong>, <strong><code>r</code></strong>)</p>
+<h4 id="khop_edge_deletion" class="doc_header"><code>khop_edge_deletion</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/perturb.py#L13" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>khop_edge_deletion</code>(<strong><code>G</code></strong>, <strong><code>k</code></strong>, <strong><code>r</code></strong>)</p>
 </blockquote>
-<p>Removes r edges which are in a k-hop neighbourhood of some node, the graph will remain connected</p>
+<p>Removes r edges which are in a k-hop neighbourhood of some node, the perturbed graph will not have isolated nodes</p>
 <p>If k is None then the samples are taken uniformly</p>
 
 </div>
@@ -58,34 +58,14 @@ summary: "Functions for perturbing a graph "
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The below example shows how the edges are localised using different values of $k$</p>
-
+<h2 id="Rewiring">Rewiring<a class="anchor-link" href="#Rewiring">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">grapht.data</span> <span class="k">import</span> <span class="n">make_planar_graph</span>
-<span class="kn">from</span> <span class="nn">grapht.plotting</span> <span class="k">import</span> <span class="n">highlight_edges</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">G</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">make_planar_graph</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]:</span>    
-    <span class="n">Gp</span> <span class="o">=</span> <span class="n">khop_edge_deletion</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
-    <span class="n">edges_removed</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">Gp</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
-    <span class="n">highlight_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">edges_removed</span><span class="p">,</span> <span class="n">axs</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos</span><span class="p">)</span>
-    <span class="n">axs</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">f</span><span class="s1">&#39;k=</span><span class="si">{k}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
 </div>
-</div>
+<div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
 <div class="output">
@@ -93,9 +73,32 @@ summary: "Functions for perturbing a graph "
 <div class="output_area">
 
 
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="khop_rewire" class="doc_header"><code>khop_rewire</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/perturb.py#L32" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>khop_rewire</code>(<strong><code>G</code></strong>, <strong><code>k</code></strong>, <strong><code>r</code></strong>, <strong><code>max_iter</code></strong>=<em><code>inf</code></em>)</p>
+</blockquote>
+<p>Rewiring in a k-hop neighbourhood</p>
 
-<div class="output_text output_subarea ">
-<pre>&lt;Figure size 1600x500 with 4 Axes&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="rewire" class="doc_header"><code>rewire</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/perturb.py#L50" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>rewire</code>(<strong><code>G</code></strong>, <strong><code>edges</code></strong>)</p>
+</blockquote>
+<p>Rewires edges in G. Each row in the returned array is (u ,v ,newv) where (u, v) was removed and (u, newv) was added</p>
+
 </div>
 
 </div>

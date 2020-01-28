@@ -50,7 +50,7 @@ summary: "Metrics and norms"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="sparse_norm" class="doc_header"><code>sparse_norm</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L15" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sparse_norm</code>(<strong><code>A</code></strong>, <strong><code>ord</code></strong>=<em><code>2</code></em>)</p>
+<h4 id="sparse_norm" class="doc_header"><code>sparse_norm</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L16" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sparse_norm</code>(<strong><code>A</code></strong>, <strong><code>ord</code></strong>=<em><code>2</code></em>)</p>
 </blockquote>
 <p>Like scipy.sparse.lingalg.norm but with 2 and max norm implemented</p>
 
@@ -71,7 +71,7 @@ summary: "Metrics and norms"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="sparse_2norm" class="doc_header"><code>sparse_2norm</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L24" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sparse_2norm</code>(<strong><code>A</code></strong>)</p>
+<h4 id="sparse_2norm" class="doc_header"><code>sparse_2norm</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L25" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sparse_2norm</code>(<strong><code>A</code></strong>)</p>
 </blockquote>
 <p>Returns the matrix 2-norm of a sparse matrix <code>A</code></p>
 
@@ -92,7 +92,7 @@ summary: "Metrics and norms"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="sparse_maxnorm" class="doc_header"><code>sparse_maxnorm</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L28" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sparse_maxnorm</code>(<strong><code>A</code></strong>)</p>
+<h4 id="sparse_maxnorm" class="doc_header"><code>sparse_maxnorm</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L29" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sparse_maxnorm</code>(<strong><code>A</code></strong>)</p>
 </blockquote>
 <p>Returns the max |A_ij| for a sparse matrix <code>A</code></p>
 
@@ -123,7 +123,7 @@ summary: "Metrics and norms"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="laplacian_distance" class="doc_header"><code>laplacian_distance</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L33" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>laplacian_distance</code>(<strong><code>G</code></strong>, <strong><code>Gp</code></strong>, <strong><code>setdiag</code></strong>=<em><code>False</code></em>)</p>
+<h4 id="laplacian_distance" class="doc_header"><code>laplacian_distance</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L34" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>laplacian_distance</code>(<strong><code>G</code></strong>, <strong><code>Gp</code></strong>, <strong><code>setdiag</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
 <p>Calculates $|| \mathcal{L} -  \mathcal{L}_p ||$ using the matrix 2-norm</p>
 
@@ -160,7 +160,27 @@ summary: "Metrics and norms"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="LineDistances" class="doc_header"><code>class</code> <code>LineDistances</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L41" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LineDistances</code>(<strong><code>G</code></strong>)</p>
+<h2 id="LineDistances" class="doc_header"><code>class</code> <code>LineDistances</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L42" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LineDistances</code>(<strong><code>G</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="LineDistancesDataset" class="doc_header"><code>class</code> <code>LineDistancesDataset</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L65" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LineDistancesDataset</code>(<strong><code>G</code></strong>, <strong><code>dataset</code></strong>) :: <a href="/grapht/metrics#LineDistances"><code>LineDistances</code></a></p>
 </blockquote>
 
 </div>
@@ -189,7 +209,7 @@ summary: "Metrics and norms"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="average_gmdegree" class="doc_header"><code>average_gmdegree</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L61" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>average_gmdegree</code>(<strong><code>G</code></strong>, <strong><code>edges</code></strong>)</p>
+<h4 id="average_gmdegree" class="doc_header"><code>average_gmdegree</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L87" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>average_gmdegree</code>(<strong><code>G</code></strong>, <strong><code>edges</code></strong>)</p>
 </blockquote>
 <p>The average edge degree geometric mean over all edges in <code>edges</code></p>
 
@@ -210,7 +230,7 @@ summary: "Metrics and norms"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="edge_degree_gm" class="doc_header"><code>edge_degree_gm</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L65" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edge_degree_gm</code>(<strong><code>G</code></strong>, <strong><code>edge</code></strong>)</p>
+<h4 id="edge_degree_gm" class="doc_header"><code>edge_degree_gm</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L91" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edge_degree_gm</code>(<strong><code>G</code></strong>, <strong><code>edge</code></strong>)</p>
 </blockquote>
 <p>For an edge (u, v) with degree du, dv this function returns the geometric mean of du and dv</p>
 

@@ -35,7 +35,7 @@ def highlight_edges_grapht(G, edges, pos):
     gt.draw.graph_draw(G, pos, edge_color=removed)
 
 # Cell
-def heatmap(df, x, y, hue, xbins=15, ybins=15, xlim=None, ylim=None, bin_numbers=False, bin_cutoff=1, rounding=3, ax=None, vmin=None, vmax=None, cbar=True):
+def heatmap(df, x, y, hue, xbins=15, ybins=15, xlim=None, ylim=None, vlim=None, bin_numbers=False, bin_cutoff=1, rounding=3, ax=None, cbar=True, estimator='mean'):
     """
         Plots a heatmap binning the df data based on columns x and y
     """
@@ -55,7 +55,10 @@ def heatmap(df, x, y, hue, xbins=15, ybins=15, xlim=None, ylim=None, bin_numbers
     ybins = np.arange(ylim[0], ylim[1]+ystep, ystep)
     df[y] = pd.cut(df[y], ybins).map(lambda y : y.mid)
 
-    heatmap_data = df.groupby([x, y]).mean()[hue].reset_index()
+    if estimator == 'mean':
+        heatmap_data = df.groupby([x, y]).mean()[hue].reset_index()
+    elif estimator == 'median':
+        heatmap_data = df.groupby([x, y]).median()[hue].reset_index()
     heatmap_data = heatmap_data.pivot(y, x, hue)
 
     heatmap_count = df.groupby([x, y]).count()[hue].reset_index()
@@ -64,7 +67,8 @@ def heatmap(df, x, y, hue, xbins=15, ybins=15, xlim=None, ylim=None, bin_numbers
     heatmap_count = heatmap_count.fillna(0).astype(int)
     annot = heatmap_count if bin_numbers else None
 
-    sns.heatmap(heatmap_data, ax = ax, cmap="YlGnBu", mask=mask, annot=annot, vmin=vmin, vmax=vmax, cbar = cbar, fmt='d')
+    if vlim is None: vlim = (None, None)
+    sns.heatmap(heatmap_data, ax = ax, cmap="YlGnBu", mask=mask, annot=annot, vmin=vlim[0], vmax=vlim[1], cbar = cbar, fmt='d')
     ax.set_xticklabels([round(float(item.get_text()), rounding) for item in ax.get_xticklabels()])
     ax.set_yticklabels([round(float(item.get_text()), rounding) for item in ax.get_yticklabels()])
     return ax

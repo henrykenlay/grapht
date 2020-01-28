@@ -50,8 +50,9 @@ def sample_edges(G, r, non_pendant=True):
     return [edges[i] for i in np.random.choice(range(len(edges)), r, replace=False)]
 
 # Cell
-def khop_subgraph(G, k):
+def khop_subgraph(G, k, node=None):
     "Returns a subgraph of G which is the k-hop neighbourhood of some node"
-    node = sample_node(G)
+    if node is None:
+        node = sample_node(G)
     khop = khop_neighbourhood(G, node, k)
-    return G.subgraph(khop)
+    return G.subgraph(khop), node

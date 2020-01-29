@@ -6,6 +6,7 @@ __all__ = ['khop_edge_deletion', 'khop_rewire', 'rewire']
 from nbdev.showdoc import *
 import networkx as nx
 import numpy as np
+import pandas as pd
 from .graphtools import non_pendant_edges, has_isolated_nodes
 from .sampling import khop_subgraph, sample_edges
 
@@ -46,15 +47,17 @@ def khop_rewire(G, k, r, max_iter=np.Inf):
             solution = Gp
     return solution, rewire_info, node
 
-
 def rewire(G, edges):
     """
-    Rewires edges in G. Each row in the returned array is (u ,v ,newv) where (u, v) was removed and (u, newv) was added
+    Rewires edges in G. All edges are broken into stubs and then stubs are randomly joined together
     """
-    G.remove_edges_from(edges)
     edges = np.array(edges)
-    new_endpoints = np.random.permutation(edges[:, 1])
-    edges = np.concatenate([edges, np.expand_dims(new_endpoints, 1)], axis=1)
-    G.add_edges_from(edges[:,[0, 2]].tolist())
+    new_edges = np.reshape(np.random.permutation(edges.flatten()), (-1, 2))
+    G.remove_edges_from(edges.tolist())
+    G.add_edges_from(new_edges.tolist())
     G.remove_edges_from(nx.selfloop_edges(G))
-    return edges
+    dfrem = pd.DataFrame(edges, columns = ['u', 'v'])
+    dfrem['type'] = 'remove'
+    dfadd = pd.DataFrame(new_edges, columns = ['u', 'v'])
+    dfadd['type'] = 'add'
+    return pd.concat([dfrem, dfadd], ignore_index=True)

@@ -13,10 +13,6 @@ jobs:
       uses: goanpeca/setup-miniconda@v1.0.2
       with:
           miniconda-version: 'latest'
-    - name: Test Miniconda
-      run: |
-        conda install -c anaconda numpy -y
-        python -c "import numpy"
     - name: Install graphtool
       run: |
         echo 'deb http://downloads.skewed.de/apt/bionic bionic universe' | sudo tee -a /etc/apt/sources.list

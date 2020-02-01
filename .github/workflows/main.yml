@@ -19,10 +19,11 @@ jobs:
         echo 'deb-src http://downloads.skewed.de/apt/bionic bionic universe' | sudo tee -a /etc/apt/sources.list
         sudo apt-key adv --keyserver keys.openpgp.org --recv-key 612DEFB798507F25
         sudo apt-get update
-        sudo apt-get install python-graph-tool
         sudo apt-get install python3-graph-tool
         tail /etc/apt/sources.list
-        python -c "from graph_tool.all import *"
+        python --version
+        python3 --version
+        python3 -c "from graph_tool.all import *"
     - name: Install the library
       run: |
         pip install nbdev jupyter

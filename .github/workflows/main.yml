@@ -9,11 +9,13 @@ jobs:
       with:
         python-version: '3.6'
         architecture: 'x64'
+    - name: Setup Miniconda
+      uses: goanpeca/setup-miniconda@v1.0.2
+      with:
+          miniconda-version: 'latest'
     - name: Install graphtool
       run: |
-        curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-        bash Miniconda3-latest-MacOSX-x86_64.sh -b
-        /Users/runner/miniconda3/bin/conda install -c anaconda numpy -y
+        conda install -c anaconda numpy -y
         python -c "import numpy"
         /Users/runner/miniconda3/bin/conda install -c conda-forge graph-tool -y
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"

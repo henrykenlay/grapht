@@ -38,5 +38,7 @@ def laplacian(G, setdiag=False):
     "Laplacian matrix of the graph `G`"
     L = nx.normalized_laplacian_matrix(G)
     if setdiag:
-        L.setdiag(1)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            L.setdiag(1)
     return L

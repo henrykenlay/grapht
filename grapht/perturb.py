@@ -11,14 +11,17 @@ from .graphtools import non_pendant_edges, has_isolated_nodes
 from .sampling import khop_subgraph, sample_edges
 
 # Cell
-def khop_edge_deletion(G, k, r):
+def khop_edge_deletion(G, k, r, max_iter=np.Inf):
     """
     Removes r edges which are in a k-hop neighbourhood of some node, the perturbed graph will not have isolated nodes
 
     If k is None then the samples are taken uniformly
     """
-    solution = None
+    solution, iteration = None, 0
     while solution is None:
+        iteration = iteration + 1
+        if iteration == max_iter:
+            return None
         subgraph, node = khop_subgraph(G, k) if k is not None else (G, None)
         if len(non_pendant_edges(subgraph)) < r:
             continue

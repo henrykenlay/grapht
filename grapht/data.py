@@ -47,7 +47,7 @@ class Planar():
         return graph, pos
 
     def __str__(self):
-        return f'Planar-{self.n}'
+        return f'planar-{self.n}'
 
 class BAGraph():
 
@@ -74,4 +74,4 @@ class SensorGraph():
         return nx.Graph(G.W)
 
     def __str__(self):
-        return f'Sensor-{self.n}'
+        return f'sensor-{self.n}'

@@ -41,13 +41,20 @@ def laplacian_distance(G, Gp, setdiag=False):
 # Cell
 class LineDistances():
 
-    def __init__(self, G):
+    def __init__(self, G, precompute=False):
         self.G = G
         self.line_graph = nx.line_graph(G)
 
     def __call__(self, edge1, edge2):
         "Calculating the linegraph distance between `edge1` and `edge2`"
+        edge1, edge2 = self.sort_edge(edge1), self.sort_edge(edge2)
         return nx.shortest_path_length(self.line_graph, edge1, edge2)
+
+    def sort_edge(self, edge):
+        if edge[0] <= edge[1]:
+            return edge
+        else:
+            return (edge[1], edge[0])
 
     def average_distance(self, edges):
         "Calculates the average linegraph distance between all pairs of edges in `edges`"

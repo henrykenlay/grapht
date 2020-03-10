@@ -10,20 +10,28 @@ from .graphtools import non_pendant_edges
 
 # Cell
 def sample_nodes(G, num_nodes=1):
-    "Uniformly samples `num_nodes` nodes"
+    """Uniformly samples `num_nodes` nodes."""
     nodes = G.nodes()
     return np.random.choice(list(nodes), num_nodes, replace=False)
 
 # Cell
 def khop_neighbourhood(G, node, k):
-    "Returns the k-hop neighbourhood of `node`"
+    """Returns the k-hop neighbourhood of `node`."""
     nodes = set([node])
     for _ in range(k):
         nodes = dilate(G, nodes)
     return nodes
 
 def dilate(G, nodes):
-    "Returns the union of the neighbourhood of all nodes in `nodes`"
+    """The union of the neighbourhood of all `nodes`.
+
+    Args:
+        G: A networkx graph.
+        nodes: A set of nodes, all elements must be contained in G.nodes().
+
+    Returns:
+        A set containing the dilation of the nodes.
+    """
     dilation = nodes.copy()
     for node in nodes:
         for neighbour in G.neighbors(node):
@@ -32,10 +40,15 @@ def dilate(G, nodes):
 
 # Cell
 def sample_edges(G, r, non_pendant=False):
-    """
-    Samples `r` edges from `G`
+    """Samples `r` edges from `G`.
 
-    If `non_pendant=True` the edges sampled are not pendant
+    Args:
+        G:
+        r:
+        non_pendant:
+
+    Returns:
+
     """
     if non_pendant:
         edges = non_pendant_edges(G)
@@ -45,7 +58,7 @@ def sample_edges(G, r, non_pendant=False):
 
 # Cell
 def khop_subgraph(G, k, node=None):
-    "Returns a subgraph of G which is the k-hop neighbourhood of some node"
+    """Returns a subgraph of `G` which is the k-hop neighbourhood of some `node`"""
     if node is None:
         node = sample_node(G)
     khop = khop_neighbourhood(G, node, k)

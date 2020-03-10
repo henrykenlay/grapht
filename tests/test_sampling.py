@@ -31,9 +31,6 @@ def test_dilate():
         node = sample_nodes(G, 1)
         dilation = dilate(G, set(node))
         assert len(dilation) == len(list(G.neighbors(node[0])))+1
-
-def test_pytest():
-    assert False
         
 # test dilate
 # TODO

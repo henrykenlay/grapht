@@ -27,9 +27,8 @@ index = {"non_pendant_edges": "00_graphtools.ipynb",
          "highlight_edges": "04_plotting.ipynb",
          "heatmap": "04_plotting.ipynb",
          "get_benchmark": "05_data.ipynb",
-         "Planar": "05_data.ipynb",
-         "BAGraph": "05_data.ipynb",
-         "SensorGraph": "05_data.ipynb"}
+         "get_planar_graph": "05_data.ipynb",
+         "get_sensor_graph": "05_data.ipynb"}
 
 modules = ["graphtools.py",
            "sampling.py",

@@ -12,8 +12,18 @@ from pathlib import Path
 
 # Cell
 def get_benchmark(dataset):
-    """
-        Dataset can be cora, pubmed, citeseer, amazon_electronics_photo, amazon_electronics_computers, ms_academic_phy or ms_academic_cs
+    """Returns an adjacency matrix `A`, feature matrix `X` and labels `y` from standard benchmark.
+
+    The data is normalised as done in `https://github.com/shchur/gnn-benchmark`.
+
+    Args:
+        `dataset` (string): Can be cora, pubmed, citeseer, amazon_electronics_photo,
+                            amazon_electronics_computers, ms_academic_phy or ms_academic_cs
+
+    Returns:
+        `A`: An adjacency matrix in sparse array format
+        `X`: A feature matrix in sparse array format
+        `y`: Labels in list format
     """
     fname = Path(__file__).parents[1].joinpath(f'data/{dataset}_gnnbench.npz')
     data = np.load(fname, allow_pickle=True)
@@ -22,16 +32,19 @@ def get_benchmark(dataset):
 
 # Cell
 class Planar():
+    """
+    Generates graphs which are planar.
+
+    The generation process is taken from:
+    https://stackoverflow.com/questions/26681899/how-to-make-networkx-graph-from-delaunay-preserving-attributes-of-the-input-node
+    """
 
     def __init__(self, n):
+        """The number of nodes n."""
         self.n = n
 
     def generate(self):
-        """
-        Makes a planar graph with n nodes
-
-        Code adapted from https://stackoverflow.com/questions/26681899/how-to-make-networkx-graph-from-delaunay-preserving-attributes-of-the-input-node
-        """
+        """Generates a planar graph with n nodes"""
         points = np.random.rand(self.n, 2)
         delTri = scipy.spatial.Delaunay(points)
         edges = set()
@@ -50,8 +63,12 @@ class Planar():
         return f'planar-{self.n}'
 
 class BAGraph():
+    """
+    A wrapper around `nx.barabasi_albert_graph`.
+    """
 
     def __init__(self, n, m):
+        """n is the number of nodes and m is the number of edges added at each step."""
         self.n = n
         self.m = m
 
@@ -62,7 +79,9 @@ class BAGraph():
         return f'BA-{self.n}-{self.m}'
 
 class SensorGraph():
-    " KNN sensor graph, this used the github pygsp.graphs.Sensor implementation, not the stable release (i.e. as described in the docs) "
+    """
+    KNN sensor graph, this used the github pygsp.graphs.Sensor implementation, not the stable release (i.e. as described in the docs)
+    """
 
     def __init__(self, n):
         self.n = n

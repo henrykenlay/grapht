@@ -12,10 +12,16 @@ from .sampling import khop_subgraph, sample_edges
 
 # Cell
 def khop_edge_deletion(G, k, r, max_iter=np.Inf):
-    """
-    Removes r edges which are in a k-hop neighbourhood of some node, the perturbed graph will not have isolated nodes
+    """Removes r edges which are in a k-hop neighbourhood of some node, the perturbed graph will not have isolated nodes.
 
-    If k is None then the samples are taken uniformly
+    If k is None then the samples are taken uniformly.
+
+    This operation is attempted `max_iter` times, if no solution is found then `None` is returned.
+
+    Returns:
+        solution: a perturbed graph
+        edges: a list of edges which were removed
+        node: the node which the k-hop neighbourhood was taken around
     """
     solution, iteration = None, 0
     while solution is None:
@@ -34,7 +40,19 @@ def khop_edge_deletion(G, k, r, max_iter=np.Inf):
 
 # Cell
 def khop_rewire(G, k, r, max_iter=np.Inf):
-    """Rewiring in a k-hop neighbourhood"""
+    """Rewire the graph in place where edges which are rewired are in a k-hop neighbourhood.
+
+    A random k-hop neighbourhood is selected in G and r edges are rewired.
+
+    If the graph contains an isolated node this procedure is repeated.
+
+    If `max_iter` attempted do not give a graph without isolated nodes `None` is returned.
+
+    Returns:
+        solution (nx.Graph): the rewired graph
+        rewire_info (pd.DataFrame): a dataframe describing which edges were added or removed
+        node: The node from which the k-hop neighbourhood was taken around
+    """
     solution, iteration = None, 0
     while solution is None:
         iteration = iteration + 1
@@ -51,8 +69,15 @@ def khop_rewire(G, k, r, max_iter=np.Inf):
     return solution, rewire_info, node
 
 def rewire(G, edges):
-    """
-    Rewires edges in G. All edges are broken into stubs and then stubs are randomly joined together
+    """Rewires `edges` in `G` inplace and returns a dataframe with the edges which were added or removed.
+
+    All edges are broken into stubs and then stubs are randomly joined together.
+
+    Self loops are removed after the rewiring step.
+
+    A dataframe is returned where each row is (u, v, 'add') or (u, v, 'remove').
+
+    The dataframe will include entries (u, u, 'add') if self loops were added but these won't appear in the graph.
     """
     edges = np.array(edges)
     new_edges = np.reshape(np.random.permutation(edges.flatten()), (-1, 2))

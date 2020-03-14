@@ -12,8 +12,10 @@ import seaborn as sns
 import pyintergraph
 
 # Cell
-def highlight_edges(G, edges, pos, node_size=300, ax=None):
+def highlight_edges(G, edges, pos=None, node_size=300, ax=None):
     """Draws the graph G with edges in `edges` drawn in red, the ax object is returned."""
+    if pos is None:
+        pos = nx.spring_layout(G)
     if ax is None:
         _, ax = plt.subplots()
     nx.draw_networkx_nodes(G, pos=pos, node_size=10, ax=ax)

@@ -7,7 +7,7 @@ table_3 = pd.DataFrame(
     [['cora', 7, 1433, 2485, 5069, 0.0563, 0.0004],
      ['citeseer', 6, 3703, 2110, 3668, 0.0569, 0.0004],
      ['pubmed', 3, 500, 19717, 44324, 0.0030, 0.0001],
-     #['corafull', 67, 8710, 18703, 62421, 0.0745, 0.0001],
+     #['cora_full', 67, 8710, 18703, 62421, 0.0745, 0.0001], # errors in table 3
      ['ms_academic_cs', 15, 6805, 18333, 81894, 0.0164, 0.0001],
      ['ms_academic_phy', 5, 8415, 34493, 247962, 0.0029, 0.0001],
      ['amazon_electronics_computers', 10, 767, 13381, 245778, 0.0149, 0.0007],
@@ -19,10 +19,12 @@ table_3 = pd.DataFrame(
 def test_get_benchmark():
     for dataset in table_3.index:
         A, X, y = get_benchmark(dataset)
+        
         # correct dimensions
         assert A.ndim == 2
         assert X.ndim == 2
         assert y.ndim == 1
+        
         # using elements of table 3 
         assert len(set(y)) == int(table_3.loc[dataset]['classes'])
         assert int(X.shape[1]) == int(table_3.loc[dataset]['features'])
@@ -31,10 +33,13 @@ def test_get_benchmark():
         assert int(A.shape[1]) == int(table_3.loc[dataset]['nodes'])
         assert int(y.shape[0]) == int(table_3.loc[dataset]['nodes'])
         assert int(A.sum()/2) == int(table_3.loc[dataset]['edges'])
+        
         # label rate calculation is described in appendix B
         assert round(len(set(y))*20/table_3.loc[dataset]['nodes'], 4) == table_3.loc[dataset]['label_rate'] 
+        
         # edge density calculation is described in appendix B, the table looks off by a factor of 4 
         #assert int(A.sum()/2) / (int(A.shape[0]) ** 2 /2) 
+        
         # check connectivity
         G = nx.is_connected(nx.from_scipy_sparse_matrix(A))
         

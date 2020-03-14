@@ -25,7 +25,7 @@ def get_benchmark(dataset):
         `X`: A feature matrix in sparse array format
         `y`: Labels in list format
     """
-    fname = Path(__file__).parents[1].joinpath(f'data/{dataset}_gnnbench.npz')
+    fname = Path(__file__).parents[1].joinpath(f'data/standardised_{dataset}.npz')
     data = np.load(fname, allow_pickle=True)
     A, X, y = data['A'].tolist(), data['X'].tolist(), data['y']
     return A, X, y

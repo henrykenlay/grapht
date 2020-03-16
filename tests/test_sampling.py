@@ -43,11 +43,8 @@ def test_dilate():
         dilation = dilate(G, [node])
         assert len(dilation) == len(list(G.neighbors(node)))+1
 
-# test dilate
-# TODO
+def test_sample_edges():
+    pass
 
-# test sample_edges
-# TODO
-
-# test khop_subgraph
-# TODO
+def test_khop_subgraph():
+    pass

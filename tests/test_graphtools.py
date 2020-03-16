@@ -1,5 +1,6 @@
 import networkx as nx
 import numpy as np
+import scipy.sparse as sp
 from grapht.graphtools import *
 
 G = nx.barabasi_albert_graph(100, 2)
@@ -62,3 +63,10 @@ def test_laplacian():
     L = laplacian(G, setdiag=True)
     L_manual[0][0] = 1
     assert np.allclose(L_manual, L.todense())
+    
+def test_sparse_is_symmetric():
+    A = sp.csr_matrix(np.random.rand(10, 10))
+    assert not sparse_is_symmetric(A)
+    A = np.random.rand(10, 10)
+    A = sp.csr_matrix(A + A.T)
+    assert sparse_is_symmetric(A)

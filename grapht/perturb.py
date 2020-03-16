@@ -11,7 +11,7 @@ from .graphtools import non_pendant_edges, has_isolated_nodes
 from .sampling import khop_subgraph, sample_edges
 
 # Cell
-def khop_edge_deletion(G, k, r, max_iter=np.Inf):
+def khop_edge_deletion(G, k, r, max_iter=100):
     """Removes r edges which are in a k-hop neighbourhood of some node, the perturbed graph will not have isolated nodes.
 
     If k is None then the samples are taken uniformly.
@@ -23,12 +23,12 @@ def khop_edge_deletion(G, k, r, max_iter=np.Inf):
         edges: a list of edges which were removed
         node: the node which the k-hop neighbourhood was taken around
     """
-    solution, iteration = None, 0
-    while solution is None:
-        iteration = iteration + 1
-        if iteration == max_iter:
-            return None
-        subgraph, node = khop_subgraph(G, k) if k is not None else (G, None)
+    solution = None
+    for _ in range(max_iter):
+        if k is not None:
+            subgraph, node = khop_subgraph(G, k)
+        else:
+            subgraph, node = G, None
         if len(non_pendant_edges(subgraph)) < r:
             continue
         edges = sample_edges(subgraph, r, non_pendant=True)
@@ -36,10 +36,16 @@ def khop_edge_deletion(G, k, r, max_iter=np.Inf):
         Gp.remove_edges_from(edges)
         if not has_isolated_nodes(Gp):
             solution = Gp
-    return solution, edges, node
+            break
+    if solution is None:
+        return None
+    else:
+        edge_info = pd.DataFrame(edges, columns=['u', 'v'])
+        edge_info['type'] = 'remove'
+        return solution, edge_info, node
 
 # Cell
-def khop_rewire(G, k, r, max_iter=np.Inf):
+def khop_rewire(G, k, r, max_iter=100):
     """Rewire the graph in place where edges which are rewired are in a k-hop neighbourhood.
 
     A random k-hop neighbourhood is selected in G and r edges are rewired.
@@ -53,12 +59,12 @@ def khop_rewire(G, k, r, max_iter=np.Inf):
         rewire_info (pd.DataFrame): a dataframe describing which edges were added or removed
         node: The node from which the k-hop neighbourhood was taken around
     """
-    solution, iteration = None, 0
-    while solution is None:
-        iteration = iteration + 1
-        if iteration == max_iter:
-            return None
-        subgraph, node = khop_subgraph(G, k) if k is not None else (G, None)
+    solution = None
+    for _ in range(max_iter):
+        if k is not None:
+            subgraph, node = khop_subgraph(G, k)
+        else:
+            subgraph, node = G, None
         if len(subgraph.edges()) < r:
             continue
         edges = sample_edges(subgraph, r, non_pendant=False)
@@ -66,7 +72,10 @@ def khop_rewire(G, k, r, max_iter=np.Inf):
         rewire_info = rewire(Gp, edges)
         if not has_isolated_nodes(Gp):
             solution = Gp
-    return solution, rewire_info, node
+    if solution is None:
+        return None
+    else:
+        return solution, rewire_info, node
 
 def rewire(G, edges):
     """Rewires `edges` in `G` inplace and returns a dataframe with the edges which were added or removed.
@@ -84,8 +93,8 @@ def rewire(G, edges):
     G.remove_edges_from(edges.tolist())
     G.add_edges_from(new_edges.tolist())
     G.remove_edges_from(nx.selfloop_edges(G))
-    dfrem = pd.DataFrame(edges, columns = ['u', 'v'])
-    dfrem['type'] = 'remove'
-    dfadd = pd.DataFrame(new_edges, columns = ['u', 'v'])
-    dfadd['type'] = 'add'
-    return pd.concat([dfrem, dfadd], ignore_index=True)
+    df_remove = pd.DataFrame(edges, columns = ['u', 'v'])
+    df_remove['type'] = 'remove'
+    df_add = pd.DataFrame(new_edges, columns = ['u', 'v'])
+    df_add['type'] = 'add'
+    return pd.concat([df_remove, df_add], ignore_index=True)

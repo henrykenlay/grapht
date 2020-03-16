@@ -18,6 +18,8 @@ def sparse_norm(A, ord=2):
 
     If `ord=2` or `ord='max'` a grapht implementation is used, otherwise scipy.sparse.lingalg.norm is used.
     """
+    if not sp.issparse(A):
+        raise TypeError('input must be sparse')
     if ord == 2:
         return sparse_2norm(A)
     elif ord == 'max':
@@ -27,10 +29,14 @@ def sparse_norm(A, ord=2):
 
 def sparse_2norm(A):
     """Returns the matrix 2-norm of a sparse matrix `A`."""
+    if not sp.issparse(A):
+        raise TypeError('input must be sparse')
     return sp.linalg.svds(A, k=1, which='LM', return_singular_vectors=False)[0]
 
 def sparse_maxnorm(A):
     """Returns the max |A_ij| for a sparse matrix `A`."""
+    if not sp.issparse(A):
+        raise TypeError('input must be sparse')
     return max(-A.min(), A.max())
 
 # Cell

@@ -4,6 +4,9 @@ from grapht.sampling import sample_edges
 import numpy as np
 import scipy.sparse as sp
 import networkx as nx
+import os
+from pathlib import Path
+
 
 def test_sparse_norm():
     A = sp.csr_matrix(np.random.rand(100, 100))
@@ -65,16 +68,18 @@ def test_LineDistances():
     assert set(line_distances) == set([1, 2])
 
 def test_LineDistancesDataset():
-    ld = LineDistancesDataset('citeseer')
-    ld = LineDistancesDataset('cora')
-    A, X, y = get_benchmark('cora')
-    G = nx.from_scipy_sparse_matrix(A)
-    edge1, edge2 = sample_edges(G, 2)
-    line_distance = ld(edge1, edge2)
-    assert np.abs(nx.dijkstra_path_length(G, edge1[0], edge2[0]) - line_distance) <= 1
-    assert np.abs(nx.dijkstra_path_length(G, edge1[0], edge2[1]) - line_distance) <= 1
-    assert np.abs(nx.dijkstra_path_length(G, edge1[1], edge2[0]) - line_distance) <= 1
-    assert np.abs(nx.dijkstra_path_length(G, edge1[1], edge2[1]) - line_distance) <= 1
+    if os.path.isfile(Path(__file__).parents[1].joinpath(f'data/linegraph_distances_citeseer.npy')):
+        ld = LineDistancesDataset('citeseer')
+    if os.path.isfile(Path(__file__).parents[1].joinpath(f'data/linegraph_distances_core.npy')):
+        ld = LineDistancesDataset('cora')
+        A, X, y = get_benchmark('cora')
+        G = nx.from_scipy_sparse_matrix(A)
+        edge1, edge2 = sample_edges(G, 2)
+        line_distance = ld(edge1, edge2)
+        assert np.abs(nx.dijkstra_path_length(G, edge1[0], edge2[0]) - line_distance) <= 1
+        assert np.abs(nx.dijkstra_path_length(G, edge1[0], edge2[1]) - line_distance) <= 1
+        assert np.abs(nx.dijkstra_path_length(G, edge1[1], edge2[0]) - line_distance) <= 1
+        assert np.abs(nx.dijkstra_path_length(G, edge1[1], edge2[1]) - line_distance) <= 1
 
 def test_average_gmdegree():
     # line graph

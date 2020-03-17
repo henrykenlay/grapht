@@ -6,6 +6,7 @@ __all__ = ['sparse_norm', 'sparse_2norm', 'sparse_maxnorm', 'laplacian_distance'
 # Cell
 from nbdev.showdoc import *
 from .graphtools import laplacian
+from .data import get_benchmark
 from functools import lru_cache
 from pathlib import Path
 import networkx as nx
@@ -93,8 +94,11 @@ class LineDistancesDataset(LineDistances):
     This is implemented for cora and citeseer.
     """
 
-    def __init__(self, G, dataset):
+    def __init__(self, dataset, G=None):
         """G is a networkx graph and `dataset` is either `cora` or `citeseer`."""
+        if G is None:
+            A, _, _ = get_benchmark('cora')
+            G = nx.from_scipy_sparse_matrix(A)
         super(LineDistancesDataset, self).__init__(G)
         self.line_graph_nodes = list(self.line_graph.nodes())
         self.dataset = dataset
@@ -102,7 +106,7 @@ class LineDistancesDataset(LineDistances):
 
     def load_dataset(self):
         """Loads a precomputed matrix with linegraph distances."""
-        fname = Path(__file__).parents[1].joinpath(f'data/{self.dataset}_linegraph_distances.npy')
+        fname = Path(__file__).parents[1].joinpath(f'data/linegraph_distances_{self.dataset}.npy')
         self.all_path_lengths = np.load(open(fname, 'rb'))
 
     def __call__(self, edge1, edge2):

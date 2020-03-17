@@ -140,4 +140,4 @@ checklink/cookies.txt
 .gitconfig
 
 # large data files
-data/
+data/linegraph*

@@ -21,19 +21,20 @@ def test_sample_nodes():
     with pytest.raises(ValueError): 
         sample_nodes(G, G.number_of_nodes()+1)
         
-""" failing in k = 0 case need to look into this
+        
 def test_khop_neighbourhood():
-    for k in range(10):
+    for k in [0, 1, 2, 3]:
         G = nx.barabasi_albert_graph(100, 3)
         node = sample_node(G)
-        nbs = khop_neighbourhood(G, node, k)
+        nbs = khop_neighbourhood(G, k, node)
         assert node in nbs
         shortest_paths = np.array([nx.shortest_path_length(G, node, nb) for nb in nbs])
         assert np.alltrue(shortest_paths <= k)
         if k <= 2:
-            print(k, shortest_paths)
             assert k in shortest_paths
-"""
+        if k == 0:
+            assert nbs == [node]
+            
 
 def test_dilate():
     G = nx.barabasi_albert_graph(100, 3)

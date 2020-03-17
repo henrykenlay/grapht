@@ -44,33 +44,9 @@ summary: "Functions which sample nodes or edges in graphs"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="sample_nodes" class="doc_header"><code>sample_nodes</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/sampling.py#L12" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sample_nodes</code>(<strong><code>G</code></strong>, <strong><code>num_nodes</code></strong>=<em><code>1</code></em>)</p>
+<h4 id="sample_node" class="doc_header"><code>sample_node</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/sampling.py#L12" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sample_node</code>(<strong><code>G</code></strong>)</p>
 </blockquote>
-<p>Uniformly samples <code>num_nodes</code> nodes</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="khop_neighbourhood" class="doc_header"><code>khop_neighbourhood</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/sampling.py#L18" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>khop_neighbourhood</code>(<strong><code>G</code></strong>, <strong><code>node</code></strong>, <strong><code>k</code></strong>)</p>
-</blockquote>
-<p>Returns the k-hop neighbourhood of <code>node</code></p>
+<p>Uniformly samples a single node from G.</p>
 
 </div>
 
@@ -89,9 +65,10 @@ summary: "Functions which sample nodes or edges in graphs"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="dilate" class="doc_header"><code>dilate</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/sampling.py#L25" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>dilate</code>(<strong><code>G</code></strong>, <strong><code>nodes</code></strong>)</p>
+<h4 id="sample_nodes" class="doc_header"><code>sample_nodes</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/sampling.py#L16" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sample_nodes</code>(<strong><code>G</code></strong>, <strong><code>num_nodes</code></strong>=<em><code>1</code></em>)</p>
 </blockquote>
-<p>Returns the union of the neighbourhood of all nodes in <code>nodes</code></p>
+<p>Uniformly samples <code>num_nodes</code> nodes.</p>
+<p>Nodes are sampled uniformly at random without replacement and returned in a list.</p>
 
 </div>
 
@@ -119,10 +96,11 @@ summary: "Functions which sample nodes or edges in graphs"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="sample_edges" class="doc_header"><code>sample_edges</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/sampling.py#L34" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sample_edges</code>(<strong><code>G</code></strong>, <strong><code>r</code></strong>, <strong><code>non_pendant</code></strong>=<em><code>False</code></em>)</p>
+<h4 id="sample_edges" class="doc_header"><code>sample_edges</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/sampling.py#L25" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sample_edges</code>(<strong><code>G</code></strong>, <strong><code>r</code></strong>, <strong><code>non_pendant</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
-<p>Samples <code>r</code> edges from <code>G</code></p>
-<p>If <code>non_pendant=True</code> the edges sampled are not pendant</p>
+<p>Samples <code>r</code> edges from <code>G</code>.</p>
+<p>Edges are sampled uniformly at random without replacement and returned as a list.</p>
+<p>If <code>non_pendant</code> is <code>True</code> then pendant edges will not be sampled.</p>
 
 </div>
 
@@ -150,9 +128,10 @@ summary: "Functions which sample nodes or edges in graphs"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="khop_subgraph" class="doc_header"><code>khop_subgraph</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/sampling.py#L47" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>khop_subgraph</code>(<strong><code>G</code></strong>, <strong><code>k</code></strong>, <strong><code>node</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="khop_subgraph" class="doc_header"><code>khop_subgraph</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/sampling.py#L39" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>khop_subgraph</code>(<strong><code>G</code></strong>, <strong><code>k</code></strong>, <strong><code>node</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
-<p>Returns a subgraph of G which is the k-hop neighbourhood of some node</p>
+<p>Returns a subgraph of <code>G</code> which is the k-hop neighbourhood of some <code>node</code>.</p>
+<p>If <code>node=None</code> then a node is randomly sampled.</p>
 
 </div>
 
@@ -163,47 +142,46 @@ summary: "Functions which sample nodes or edges in graphs"
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
 
 <div class="output_area">
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">Failed</span>                                    Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-33-66ec205acbbd&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">import</span> pytest
-<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-green-fg">with</span> pytest<span class="ansi-blue-fg">.</span>raises<span class="ansi-blue-fg">(</span>ValueError<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg">     </span>sample_nodes<span class="ansi-blue-fg">(</span>G<span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">2</span><span class="ansi-blue-fg">)</span>
 
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/_pytest/python_api.py</span> in <span class="ansi-cyan-fg">__exit__</span><span class="ansi-blue-fg">(self, exc_type, exc_val, exc_tb)</span>
-<span class="ansi-green-intense-fg ansi-bold">    744</span>         __tracebackhide__ <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">True</span>
-<span class="ansi-green-intense-fg ansi-bold">    745</span>         <span class="ansi-green-fg">if</span> exc_type <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 746</span><span class="ansi-red-fg">             </span>fail<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>message<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    747</span>         <span class="ansi-green-fg">assert</span> self<span class="ansi-blue-fg">.</span>excinfo <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span>
-<span class="ansi-green-intense-fg ansi-bold">    748</span>         <span class="ansi-green-fg">if</span> <span class="ansi-green-fg">not</span> issubclass<span class="ansi-blue-fg">(</span>exc_type<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>expected_exception<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="khop_neighbourhood" class="doc_header"><code>khop_neighbourhood</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/sampling.py#L49" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>khop_neighbourhood</code>(<strong><code>G</code></strong>, <strong><code>k</code></strong>, <strong><code>node</code></strong>)</p>
+</blockquote>
+<p>Returns the k-hop neighbourhood of <code>node</code>.</p>
 
-<span class="ansi-green-fg">/anaconda3/lib/python3.7/site-packages/_pytest/outcomes.py</span> in <span class="ansi-cyan-fg">fail</span><span class="ansi-blue-fg">(msg, pytrace)</span>
-<span class="ansi-green-intense-fg ansi-bold">    128</span>     &#34;&#34;&#34;
-<span class="ansi-green-intense-fg ansi-bold">    129</span>     __tracebackhide__ <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">True</span>
-<span class="ansi-green-fg">--&gt; 130</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">raise</span> Failed<span class="ansi-blue-fg">(</span>msg<span class="ansi-blue-fg">=</span>msg<span class="ansi-blue-fg">,</span> pytrace<span class="ansi-blue-fg">=</span>pytrace<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    131</span> 
-<span class="ansi-green-intense-fg ansi-bold">    132</span> 
-
-<span class="ansi-red-fg">Failed</span>: DID NOT RAISE &lt;class &#39;ValueError&#39;&gt;</pre>
 </div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="dilate" class="doc_header"><code>dilate</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/sampling.py#L56" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>dilate</code>(<strong><code>G</code></strong>, <strong><code>nodes</code></strong>)</p>
+</blockquote>
+<p>Returns a list which contains the union of the neighbourhood of all <code>nodes</code>.</p>
+<p>Args:
+    G: A networkx graph.
+    nodes: A list of nodes, all elements must be contained in G.nodes().</p>
+<p>Returns:
+    A list containing the dilation of the nodes.</p>
+
+</div>
+
 </div>
 
 </div>

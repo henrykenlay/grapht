@@ -38,9 +38,9 @@ summary: "Plotting utilities"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="highlight_edges" class="doc_header"><code>highlight_edges</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/plotting.py#L15" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>highlight_edges</code>(<strong><code>G</code></strong>, <strong><code>edges</code></strong>, <strong><code>ax</code></strong>, <strong><code>pos</code></strong>, <strong><code>node_size</code></strong>=<em><code>300</code></em>)</p>
+<h4 id="highlight_edges" class="doc_header"><code>highlight_edges</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/plotting.py#L15" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>highlight_edges</code>(<strong><code>G</code></strong>, <strong><code>edges</code></strong>, <strong><code>pos</code></strong>=<em><code>None</code></em>, <strong><code>node_size</code></strong>=<em><code>300</code></em>, <strong><code>ax</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
-<p>Draws the graph G with edges in <code>edges</code> drawn in red</p>
+<p>Draws the graph G with edges in <code>edges</code> drawn in red, the ax object is returned.</p>
 
 </div>
 
@@ -62,9 +62,9 @@ summary: "Plotting utilities"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="heatmap" class="doc_header"><code>heatmap</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/plotting.py#L25" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>heatmap</code>(<strong><code>df</code></strong>, <strong><code>x</code></strong>, <strong><code>y</code></strong>, <strong><code>hue</code></strong>, <strong><code>xbins</code></strong>=<em><code>15</code></em>, <strong><code>ybins</code></strong>=<em><code>15</code></em>, <strong><code>xlim</code></strong>=<em><code>None</code></em>, <strong><code>ylim</code></strong>=<em><code>None</code></em>, <strong><code>vlim</code></strong>=<em><code>None</code></em>, <strong><code>bin_numbers</code></strong>=<em><code>False</code></em>, <strong><code>bin_cutoff</code></strong>=<em><code>1</code></em>, <strong><code>rounding</code></strong>=<em><code>3</code></em>, <strong><code>ax</code></strong>=<em><code>None</code></em>, <strong><code>cbar</code></strong>=<em><code>True</code></em>, <strong><code>estimator</code></strong>=<em><code>'mean'</code></em>, <strong><code>square</code></strong>=<em><code>False</code></em>)</p>
+<h4 id="heatmap" class="doc_header"><code>heatmap</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/plotting.py#L29" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>heatmap</code>(<strong><code>df</code></strong>, <strong><code>x</code></strong>, <strong><code>y</code></strong>, <strong><code>hue</code></strong>, <strong><code>xbins</code></strong>=<em><code>15</code></em>, <strong><code>ybins</code></strong>=<em><code>15</code></em>, <strong><code>xlim</code></strong>=<em><code>None</code></em>, <strong><code>ylim</code></strong>=<em><code>None</code></em>, <strong><code>vlim</code></strong>=<em><code>None</code></em>, <strong><code>bin_numbers</code></strong>=<em><code>False</code></em>, <strong><code>bin_cutoff</code></strong>=<em><code>1</code></em>, <strong><code>rounding</code></strong>=<em><code>3</code></em>, <strong><code>ax</code></strong>=<em><code>None</code></em>, <strong><code>cbar</code></strong>=<em><code>True</code></em>, <strong><code>estimator</code></strong>=<em><code>'mean'</code></em>, <strong><code>square</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
-<p>Plots a heatmap binning the df data based on columns x and y</p>
+<p>Plots a heatmap binning the df data based on columns x and y.</p>
 
 </div>
 
@@ -79,70 +79,6 @@ summary: "Plotting utilities"
 <h2 id="Helper-functions">Helper functions<a class="anchor-link" href="#Helper-functions">&#182;</a></h2>
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_graph_tool_graph" class="doc_header"><code>get_graph_tool_graph</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/plotting.py#L65" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_graph_tool_graph</code>(<strong><code>G</code></strong>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_networkx_graph" class="doc_header"><code>get_networkx_graph</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/plotting.py#L70" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_networkx_graph</code>(<strong><code>G</code></strong>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="nxpos_to_graphtpos" class="doc_header"><code>nxpos_to_graphtpos</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/plotting.py#L75" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>nxpos_to_graphtpos</code>(<strong><code>G</code></strong>, <strong><code>nx_pos</code></strong>)</p>
-</blockquote>
-<p>Takes a graph G (networkx or graph_tool) and a position dictionary and returns a graph_tool graph and VertexPropertyMap for plotting</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 </div>

@@ -97,7 +97,7 @@ class LineDistancesDataset(LineDistances):
     def __init__(self, dataset, G=None):
         """G is a networkx graph and `dataset` is either `cora` or `citeseer`."""
         if G is None:
-            A, _, _ = get_benchmark('cora')
+            A, _, _ = get_benchmark(dataset)
             G = nx.from_scipy_sparse_matrix(A)
         super(LineDistancesDataset, self).__init__(G)
         self.line_graph_nodes = list(self.line_graph.nodes())

@@ -26,7 +26,7 @@ def highlight_edges(G, edges, pos=None, node_size=300, ax=None):
     return ax
 
 # Cell
-def heatmap(df, x, y, hue, xbins=15, ybins=15, xlim=None, ylim=None, vlim=None, bin_numbers=False, bin_cutoff=1, rounding=3, ax=None, cbar=True, estimator='mean', square=False):
+def heatmap(df, x, y, hue, xbins=15, ybins=15, xlim=None, ylim=None, vlim=None, bin_numbers=False, bin_cutoff=1, rounding=3, ax=None, cbar=True, estimator='mean', square=False, robust=False):
     """Plots a heatmap binning the df data based on columns x and y."""
     df = df.copy()
     if ax is None:
@@ -57,7 +57,7 @@ def heatmap(df, x, y, hue, xbins=15, ybins=15, xlim=None, ylim=None, vlim=None, 
     annot = heatmap_count if bin_numbers else None
 
     if vlim is None: vlim = (None, None)
-    sns.heatmap(heatmap_data, ax = ax, cmap="YlGnBu", mask=mask, annot=annot, vmin=vlim[0], vmax=vlim[1], cbar = cbar, fmt='d', square=square)
+    sns.heatmap(heatmap_data, ax = ax, cmap="YlGnBu", mask=mask, annot=annot, vmin=vlim[0], vmax=vlim[1], cbar = cbar, fmt='d', square=square, robust=robust)
     ax.set_xticklabels([round(float(item.get_text()), rounding) for item in ax.get_xticklabels()])
     ax.set_yticklabels([round(float(item.get_text()), rounding) for item in ax.get_yticklabels()])
     return ax

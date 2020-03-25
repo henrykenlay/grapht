@@ -1,5 +1,6 @@
 import pandas as pd
 import networkx as nx
+import numpy as np
 from grapht.data import *
 
 # this is table 3 from https://arxiv.org/pdf/1811.05868.pdf
@@ -59,3 +60,17 @@ def test_get_sensor_graph():
         assert G.number_of_nodes() == n
         assert nx.is_connected(G)
         assert not nx.is_directed(G)
+        
+def test_get_BASBM():
+    for m in [2, 3]:
+        sizes = np.random.randint(m+1, 15, 5)
+        G = get_BASBM(sizes, 0, m)
+        expected_total_edges = np.sum([(n-m)*m for n in sizes])
+        assert len(G.edges()) == expected_total_edges
+        G = get_BASBM(sizes, 1, m)
+        expected_total_edges = np.sum([(n-m)*m for n in sizes])
+        for i in range(len(sizes)):
+            for j in range(i+1,len(sizes)):
+                expected_total_edges += sizes[i]*sizes[j]
+        assert len(G.edges()) == expected_total_edges
+    

@@ -34,15 +34,6 @@ def test_khop_neighbourhood():
             assert k in shortest_paths
         if k == 0:
             assert nbs == [node]
-            
-
-def test_dilate():
-    G = nx.barabasi_albert_graph(100, 3)
-    # single node dilation
-    for _ in range(100):
-        node = sample_node(G)
-        dilation = dilate(G, [node])
-        assert len(dilation) == len(list(G.neighbors(node)))+1
 
 def test_sample_edges():
     pass

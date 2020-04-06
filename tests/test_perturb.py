@@ -2,11 +2,11 @@ from grapht.perturb import *
 from grapht.sampling import sample_edges
 import networkx as nx
 
-def test_khop_edge_deletion():
+def test_khop_remove():
     G = nx.barabasi_albert_graph(500, 2)
     r = 5
     for k in range(1, 5):
-        Gp, edge_info, node = khop_edge_deletion(G, k, r)
+        Gp, edge_info, node = khop_remove(G, k, r)
         # check only edges were deleted and exactly r were deleted
         assert set(Gp.edges()).issubset(set(G.edges())) 
         assert len(G.edges()) - len(Gp.edges()) == r 

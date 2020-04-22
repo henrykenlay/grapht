@@ -1,3 +1,4 @@
+from grapht.graphtools import has_isolated_nodes
 from grapht.perturb import *
 from grapht.sampling import sample_edges
 import networkx as nx
@@ -17,15 +18,25 @@ def test_khop_remove():
             assert nx.dijkstra_path_length(G, u, node) <= r
         for v in edge_info['v']:
             assert nx.dijkstra_path_length(G, v, node) <= r
+        
+        
+         
+        Gp, _, _ = khop_remove(G, k, r, enforce_connected=True, enforce_no_isolates=True)
+        assert nx.is_connected(Gp) and not has_isolated_nodes(Gp)
+        Gp, _, _ = khop_remove(G, k, r, enforce_connected=True, enforce_no_isolates=False)
+        assert nx.is_connected(Gp)
+        Gp, _, _ = khop_remove(G, k, r, enforce_connected=False, enforce_no_isolates=True)
+        assert not has_isolated_nodes(Gp)
+        
 
-def khop_rewire():
+def test_khop_rewire():
     G = nx.barabasi_albert_graph(100, 3)
     k, r = 3, 3
-    solution, rewire_info, node  = khop_rewire(G, k, r)
-    assert len(rewire_info) == 2*r
+    solution, edge_info, node  = khop_rewire(G, k, r)
+    assert len(edge_info) == 2*r
     assert len(edge_info['type'].unique()) == 2
 
-def rewire():
+def test_rewire():
     G = nx.barabasi_albert_graph(100, 3)
     stubs_before = set()
     stubs_after = set()

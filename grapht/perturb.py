@@ -11,32 +11,59 @@ from .graphtools import non_pendant_edges, has_isolated_nodes
 from .sampling import khop_subgraph, sample_edges
 
 # Cell
-def khop_remove(G, k, r, max_iter=100):
-    """Removes r edges which are in a k-hop neighbourhood of some node, the perturbed graph will not have isolated nodes.
+def khop_remove(G, k, r, max_iter=np.Inf, enforce_connected=False, enforce_no_isolates=True):
+    """Removes r edges which are in a k-hop neighbourhood of a random node.
 
-    If k is None then the samples are taken uniformly.
-
-    This operation is attempted `max_iter` times, if no solution is found then `None` is returned.
+    Args:
+        G: A nx.Graph to remove edges from.
+        k: If None then remove edges uniformly, else remove in a k-hop neighbourhood.
+        r: The number of edges to remove.
+        max_iter: The maximum number of attempts to find a valid perturbation.
+        enforce_connected: If True the perturbed graph will be connected.
+        enforce_no_isolates: If True the perturbed graph will not contain isolated nodes.
 
     Returns:
-        solution: a perturbed graph
-        edges: a list of edges which were removed
-        node: the node which the k-hop neighbourhood was taken around
+        solution: a perturbed graph.
+        edges: a list of edges which were removed.
+        node: the node which the k-hop neighbourhood was taken around.
     """
     solution = None
-    for _ in range(max_iter):
+    attempts = 0
+    while solution is None:
+        # generate subgraph
         if k is not None:
             subgraph, node = khop_subgraph(G, k)
         else:
             subgraph, node = G, None
-        if len(non_pendant_edges(subgraph)) < r:
+
+        # check subgraph can yield a solution
+        if not enforce_no_isolates and len(subgraph.edges()) < r:
             continue
-        edges = sample_edges(subgraph, r, non_pendant=True)
+        if enforce_no_isolates and len(non_pendant_edges(subgraph)) < r:
+            continue
+
+        # perturb graph
+        edges = sample_edges(subgraph, r, non_pendant=enforce_no_isolates)
         Gp = G.copy()
         Gp.remove_edges_from(edges)
-        if not has_isolated_nodes(Gp):
-            solution = Gp
+
+        # check its valid
+        if enforce_connected:
+            if nx.is_connected(Gp):
+                solution = Gp
+        else:
+            if enforce_no_isolates:
+                if not has_isolated_nodes(Gp):
+                    solution = Gp
+            else:
+                solution = Gp
+
+        # timeout counter
+        attempts += 1
+        if attempts >= max_iter:
             break
+
+    # return solution if found
     if solution is None:
         return None
     else:

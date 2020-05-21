@@ -66,20 +66,17 @@ def test_LineDistances():
             if edge1 != edge2:
                 line_distances.append(ld(edge1, edge2))
     assert set(line_distances) == set([1, 2])
-
-def test_LineDistancesDataset():
-    if os.path.isfile(Path(__file__).parents[1].joinpath(f'data/linegraph_distances_citeseer.npy')):
-        ld = LineDistancesDataset('citeseer')
-    if os.path.isfile(Path(__file__).parents[1].joinpath(f'data/linegraph_distances_core.npy')):
-        ld = LineDistancesDataset('cora')
-        A, X, y = get_benchmark('cora')
-        G = nx.from_scipy_sparse_matrix(A)
-        edge1, edge2 = sample_edges(G, 2)
-        line_distance = ld(edge1, edge2)
-        assert np.abs(nx.dijkstra_path_length(G, edge1[0], edge2[0]) - line_distance) <= 1
-        assert np.abs(nx.dijkstra_path_length(G, edge1[0], edge2[1]) - line_distance) <= 1
-        assert np.abs(nx.dijkstra_path_length(G, edge1[1], edge2[0]) - line_distance) <= 1
-        assert np.abs(nx.dijkstra_path_length(G, edge1[1], edge2[1]) - line_distance) <= 1
+    
+    A, X, y = get_benchmark('cora')
+    G = nx.from_scipy_sparse_matrix(A)
+    ld = LineDistances(G, precompute=True)
+    edge1, edge2 = sample_edges(G, 2)
+    line_distance = ld(edge1, edge2)
+    assert np.abs(nx.dijkstra_path_length(G, edge1[0], edge2[0]) - line_distance) <= 1
+    assert np.abs(nx.dijkstra_path_length(G, edge1[0], edge2[1]) - line_distance) <= 1
+    assert np.abs(nx.dijkstra_path_length(G, edge1[1], edge2[0]) - line_distance) <= 1
+    assert np.abs(nx.dijkstra_path_length(G, edge1[1], edge2[1]) - line_distance) <= 1
+    
 
 def test_average_gmdegree():
     # line graph

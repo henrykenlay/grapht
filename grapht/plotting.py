@@ -62,7 +62,10 @@ def heatmap(df, x, y, hue, xbins=15, ybins=15, xlim=None, ylim=None, vlim=None, 
     heatmap_count = heatmap_count.fillna(0).astype(int)
     annot = heatmap_count if bin_numbers else None
 
-    if vlim is None: vlim = (None, None)
+    if vlim is None:
+        matrix_values = heatmap_data.to_numpy().flatten()[~mask.to_numpy().flatten()]
+        matrix_values = matrix_values[~np.isnan(matrix_values)]
+        vlim = (np.min(matrix_values), np.max(matrix_values))
     sns.heatmap(heatmap_data, ax = ax, cmap="YlGnBu", mask=mask, annot=annot, vmin=vlim[0], vmax=vlim[1], cbar = cbar, fmt='d', square=square, robust=robust)
     ax.set_xticklabels([round(float(item.get_text()), rounding) for item in ax.get_xticklabels()])
     ax.set_yticklabels([round(float(item.get_text()), rounding) for item in ax.get_yticklabels()])

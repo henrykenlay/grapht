@@ -6,6 +6,7 @@ keywords: fastai
 sidebar: home_sidebar
 
 summary: "Metrics and norms"
+description: "Metrics and norms"
 ---
 <!--
 
@@ -18,17 +19,24 @@ summary: "Metrics and norms"
 -->
 
 <div class="container" id="notebook-container">
-    {% raw %}
         
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Norms">Norms<a class="anchor-link" href="#Norms">&#182;</a></h2>
+<h2 id="Norms">Norms<a class="anchor-link" href="#Norms"> </a></h2>
 </div>
 </div>
 </div>
@@ -39,9 +47,15 @@ summary: "Metrics and norms"
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -64,6 +78,10 @@ summary: "Metrics and norms"
 </div>
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -85,6 +103,10 @@ summary: "Metrics and norms"
 </div>
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -106,16 +128,24 @@ summary: "Metrics and norms"
 </div>
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Metrics">Metrics<a class="anchor-link" href="#Metrics">&#182;</a></h2><p>The Laplacian distance isnt a real metric but 🤷‍♂️</p>
+<h2 id="Metrics">Metrics<a class="anchor-link" href="#Metrics"> </a></h2><p>The Laplacian distance isnt a real metric but 🤷‍♂️</p>
 
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -137,9 +167,11 @@ summary: "Metrics and norms"
 </div>
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Line-distances">Line distances<a class="anchor-link" href="#Line-distances">&#182;</a></h2>
+<h2 id="Line-distances">Line distances<a class="anchor-link" href="#Line-distances"> </a></h2>
 </div>
 </div>
 </div>
@@ -150,9 +182,15 @@ summary: "Metrics and norms"
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -162,9 +200,11 @@ summary: "Metrics and norms"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="LineDistances" class="doc_header"><code>class</code> <code>LineDistances</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L52" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LineDistances</code>(<strong><code>G</code></strong>)</p>
+<h2 id="LineDistances" class="doc_header"><code>class</code> <code>LineDistances</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L52" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LineDistances</code>(<strong><code>G</code></strong>, <strong><code>precompute</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
 <p>An object which computes the distances of edges in the graphs line graph.</p>
+<p>If precompute is True a distance matrix is computed for all pairs of edges.</p>
+<p>If precompute is a string load a distance matrix from file.</p>
 
 </div>
 
@@ -174,38 +214,23 @@ summary: "Metrics and norms"
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
+    {% endraw %}
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h2 id="LineDistancesDataset" class="doc_header"><code>class</code> <code>LineDistancesDataset</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L88" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LineDistancesDataset</code>(<strong><code>dataset</code></strong>, <strong><code>G</code></strong>=<em><code>None</code></em>) :: <a href="/grapht/metrics#LineDistances"><code>LineDistances</code></a></p>
-</blockquote>
-<p>A LineDistances object for benchmark datasets.</p>
-<p>The linegraph pairwise distances for all edges have been precomputed.</p>
-<p>This is implemented for cora and citeseer.</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Degree">Degree<a class="anchor-link" href="#Degree">&#182;</a></h1>
+<h1 id="Degree">Degree<a class="anchor-link" href="#Degree"> </a></h1>
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -215,7 +240,7 @@ summary: "Metrics and norms"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="average_gmdegree" class="doc_header"><code>average_gmdegree</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L123" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>average_gmdegree</code>(<strong><code>G</code></strong>, <strong><code>edges</code></strong>)</p>
+<h4 id="average_gmdegree" class="doc_header"><code>average_gmdegree</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L103" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>average_gmdegree</code>(<strong><code>G</code></strong>, <strong><code>edges</code></strong>)</p>
 </blockquote>
 <p>The average edge degree geometric mean over all edges in <code>edges</code>.</p>
 
@@ -227,6 +252,10 @@ summary: "Metrics and norms"
 </div>
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -236,7 +265,7 @@ summary: "Metrics and norms"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="edge_degree_gm" class="doc_header"><code>edge_degree_gm</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L127" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edge_degree_gm</code>(<strong><code>G</code></strong>, <strong><code>edge</code></strong>)</p>
+<h4 id="edge_degree_gm" class="doc_header"><code>edge_degree_gm</code><a href="https://github.com/HenryKenlay/grapht/tree/master/grapht/metrics.py#L107" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edge_degree_gm</code>(<strong><code>G</code></strong>, <strong><code>edge</code></strong>)</p>
 </blockquote>
 <p>For an edge (u, v) with degree du, dv this function returns the geometric mean of du and dv.</p>
 
@@ -249,6 +278,7 @@ summary: "Metrics and norms"
 
 </div>
     {% endraw %}
+
 </div>
  
 

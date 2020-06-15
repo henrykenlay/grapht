@@ -9,9 +9,12 @@ from .graphtools import laplacian
 from .data import get_benchmark
 from functools import lru_cache
 from pathlib import Path
+from hashlib import md5
 import networkx as nx
 import numpy as np
 import scipy.sparse as sp
+import pickle
+import os
 
 # Cell
 def sparse_norm(A, ord=2):
@@ -53,22 +56,47 @@ class LineDistances():
     """
     An object which computes the distances of edges in the graphs line graph.
 
-    If precompute is True a distance matrix is computed for all pairs of edges.
-
-    If precompute is a string load a distance matrix from file.
+    If precompute is True a distance matrix is computed for all pairs of edges or loaded if a file exists at precompute_dir.
     """
 
-    def __init__(self, G, precompute=False):
+    def __init__(self, G, precompute=False, precompute_dir='/tmp'):
         """G is a networkx graph."""
         self.G = G
         self.line_graph = nx.line_graph(G)
+        self.line_graph_nodes = list(self.line_graph.nodes())
         self.precompute = precompute
-        if isinstance(precompute, str):
-            fname = Path(__file__).parents[1].joinpath(f'data/linegraph_distances_{self.precompute}.npy')
-            self.all_path_lengths = np.load(open(fname, 'rb'))
+
         if self.precompute:
-            self.line_graph_nodes = list(self.line_graph.nodes())
-            self.all_path_lengths = sp.csgraph.dijkstra(nx.to_scipy_sparse_matrix(self.line_graph))
+            self.precompute_dir = precompute_dir
+            graph_hash = self.hash_graph(G)
+            self.fname = os.path.join(self.precompute_dir, f'grapht_{graph_hash}.npy')
+            print(self.fname)
+            print(os.path.isfile(self.fname))
+            if os.path.isfile(os.path.isfile(self.fname)):
+                self.load_precompute()
+            else:
+                self.precompute_and_save()
+
+
+    def precompute_and_save(self):
+        """Compute all path lengths and save to disk."""
+        print('saving')
+        L = nx.to_scipy_sparse_matrix(self.line_graph)
+        self.all_path_lengths = sp.csgraph.dijkstra(L, directed=False, unweighted=True)
+        np.save(self.fname, self.all_path_lengths)
+
+
+    def load_precompute(self):
+        """Load the precompute path lengths matrix."""
+        print('loading')
+        self.all_path_lengths = np.load(self.fname)
+
+
+    def hash_graph(self, G):
+        """Return a string hash of a networkx graph."""
+        pickle_str = pickle.dumps(G)
+        return md5(pickle_str).hexdigest()
+
 
     def __call__(self, edge1, edge2):
         """Calculates the linegraph distance between `edge1` and `edge2`."""
@@ -86,6 +114,12 @@ class LineDistances():
         else:
             return (edge[1], edge[0])
 
+    @lru_cache(maxsize=None)
+    def edge_index(self, edge):
+        """Returns the index of the matrix which corresponds to `edge`."""
+        return self.line_graph_nodes.index(edge)
+
+
     def pairwise_distances(self, edges):
         """Calculates the linegraph distance between all pairs of edges in `edges`."""
         distances = []
@@ -93,11 +127,6 @@ class LineDistances():
             for j in range(i+1, len(edges)):
                 distances.append(self(edges[i], edges[j]))
         return np.array(distances)
-
-    @lru_cache(maxsize=None)
-    def edge_index(self, edge):
-        """Returns the index of the matrix which corresponds to `edge`."""
-        return self.line_graph_nodes.index(edge)
 
 # Cell
 def average_gmdegree(G, edges):

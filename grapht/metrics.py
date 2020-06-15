@@ -70,8 +70,6 @@ class LineDistances():
             self.precompute_dir = precompute_dir
             graph_hash = self.hash_graph(G)
             self.fname = os.path.join(self.precompute_dir, f'grapht_{graph_hash}.npy')
-            print(self.fname)
-            print(os.path.isfile(self.fname))
             if os.path.isfile(os.path.isfile(self.fname)):
                 self.load_precompute()
             else:
@@ -80,7 +78,6 @@ class LineDistances():
 
     def precompute_and_save(self):
         """Compute all path lengths and save to disk."""
-        print('saving')
         L = nx.to_scipy_sparse_matrix(self.line_graph)
         self.all_path_lengths = sp.csgraph.dijkstra(L, directed=False, unweighted=True)
         np.save(self.fname, self.all_path_lengths)
@@ -88,7 +85,6 @@ class LineDistances():
 
     def load_precompute(self):
         """Load the precompute path lengths matrix."""
-        print('loading')
         self.all_path_lengths = np.load(self.fname)
 
 

@@ -59,12 +59,13 @@ class LineDistances():
     If precompute is True a distance matrix is computed for all pairs of edges or loaded if a file exists at precompute_dir.
     """
 
-    def __init__(self, G, precompute=False, precompute_dir='/tmp'):
+    def __init__(self, G, precompute=False, precompute_dir='/tmp', verbose=False):
         """G is a networkx graph."""
         self.G = G
         self.line_graph = nx.line_graph(G)
         self.line_graph_nodes = list(self.line_graph.nodes())
         self.precompute = precompute
+        self.verbose = verbose
 
         if self.precompute:
             self.precompute_dir = precompute_dir
@@ -79,12 +80,17 @@ class LineDistances():
     def precompute_and_save(self):
         """Compute all path lengths and save to disk."""
         L = nx.to_scipy_sparse_matrix(self.line_graph)
+        if self.verbose:
+            print(f'Precomputing all paths (n = {L.shape[0]})')
+            print('Destination', self.fname, flush=True)
         self.all_path_lengths = sp.csgraph.dijkstra(L, directed=False, unweighted=True)
         np.save(self.fname, self.all_path_lengths)
 
 
     def load_precompute(self):
         """Load the precompute path lengths matrix."""
+        if self.verbose:
+            print('Loading ', self.fname)
         self.all_path_lengths = np.load(self.fname)
 
 

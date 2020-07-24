@@ -8,7 +8,7 @@ import networkx as nx
 import numpy as np
 import pandas as pd
 from .graphtools import non_pendant_edges, has_isolated_nodes
-from .sampling import khop_subgraph, sample_edges
+from .sampling import khop_subgraph, sample_edges, sample_nodes
 
 # Cell
 def khop_remove(G, k, r, max_iter=np.Inf, enforce_connected=False, enforce_no_isolates=True):
